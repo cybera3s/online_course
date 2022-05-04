@@ -34,10 +34,13 @@ class LessonAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('lesson', 'grade')
+    list_display = ('lesson_title', 'grade')
     list_filter = ('lesson', 'grade')
     search_fields = ('question_text', 'lesson')
     inlines = [ChoiceInline]
+
+    def lesson_title(self, obj):
+        return obj.lesson.title
 
 
 @admin.register(Choice)
