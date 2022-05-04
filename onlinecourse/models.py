@@ -97,8 +97,7 @@ class Enrollment(models.Model):
 
 
 class Question(models.Model):
-
-    lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='questions')
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='questions')
     question_text = models.CharField(max_length=250)
     grade = models.PositiveIntegerField()
 
@@ -110,6 +109,7 @@ class Question(models.Model):
             return True
         else:
             return False
+
 
 #  <HINT> Create a Choice Model with:
 # Used to persist choice content for a question
