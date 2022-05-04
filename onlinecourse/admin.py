@@ -38,6 +38,7 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ('lesson', 'grade')
     list_filter = ('lesson', 'grade')
     search_fields = ('question_text', 'lesson')
+    inlines = [ChoiceInline]
 
 
 @admin.register(Choice)
