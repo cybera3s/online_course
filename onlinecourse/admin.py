@@ -32,7 +32,6 @@ class LessonAdmin(admin.ModelAdmin):
     inlines = [QuestionInline]
 
 
-# <HINT> Register Question and Choice models here
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ('lesson', 'grade')
