@@ -39,6 +39,16 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ('question_text', 'lesson')
 
 
+@admin.register(Choice)
+class ChoiceAdmin(admin.ModelAdmin):
+    list_display = ('question', 'choice_text')
+    list_filter = ('is_correct',)
+    search_fields = ('choice_text',)
+
+    def choice_text(self, obj):
+        return obj.choice_text[:30]
+
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Instructor)
