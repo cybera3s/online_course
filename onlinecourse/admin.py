@@ -45,12 +45,12 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(Choice)
 class ChoiceAdmin(admin.ModelAdmin):
-    list_display = ('question', 'choice_text')
+    list_display = ('question', 'text')
     list_filter = ('is_correct',)
     search_fields = ('choice_text',)
 
-    def choice_text(self, obj):
-        return obj.choice_text[:30]
+    def text(self, obj):
+        return obj.choice_text[:50]
 
 
 admin.site.register(Course, CourseAdmin)
