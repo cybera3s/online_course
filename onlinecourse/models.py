@@ -113,6 +113,9 @@ class Question(models.Model):
         else:
             return False
 
+    def __str__(self):
+        return f"{self.id} - {self.question_text[:25]}"
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='choices')
