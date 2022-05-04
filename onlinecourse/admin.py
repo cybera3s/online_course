@@ -1,6 +1,7 @@
 from django.contrib import admin
 # <HINT> Import any new Models here
-from .models import Course, Lesson, Instructor, Learner
+from .models import Course, Lesson, Instructor, Learner, Question, Choice
+
 
 # <HINT> Register QuestionInline and ChoiceInline classes here
 
@@ -23,7 +24,13 @@ class LessonAdmin(admin.ModelAdmin):
 
 
 # <HINT> Register Question and Choice models here
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('lesson', 'grade')
+    list_filter = ('lesson', 'grade')
+    search_fields = ('question_text', 'lesson')
 
+    
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Instructor)
