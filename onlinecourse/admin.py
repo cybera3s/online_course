@@ -4,6 +4,9 @@ from .models import Course, Lesson, Instructor, Learner, Question, Choice
 
 
 # <HINT> Register QuestionInline and ChoiceInline classes here
+class QuestionInline(admin.StackedInline):
+    model = Question
+    extra = 5
 
 
 class LessonInline(admin.StackedInline):
@@ -30,7 +33,7 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ('lesson', 'grade')
     search_fields = ('question_text', 'lesson')
 
-    
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Instructor)
