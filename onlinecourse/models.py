@@ -97,7 +97,6 @@ class Enrollment(models.Model):
 
 
 class Question(models.Model):
-    # Foreign key to lesson
 
     lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='questions')
     question_text = models.CharField(max_length=250)
