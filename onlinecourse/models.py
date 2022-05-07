@@ -64,6 +64,9 @@ class Course(models.Model):
     total_enrollment = models.IntegerField(default=0)
     is_enrolled = False
 
+    def get_all_questions(self):
+        return Question.objects.filter(lesson__course=self)
+
     def __str__(self):
         return "Name: " + self.name + "," + \
                "Description: " + self.description
