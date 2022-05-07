@@ -34,7 +34,7 @@ class LessonAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('lesson_title', 'grade')
+    list_display = ('question_text', 'lesson_title', 'grade')
     list_filter = ('lesson', 'grade')
     search_fields = ('question_text', 'lesson')
     inlines = [ChoiceInline]
@@ -42,6 +42,8 @@ class QuestionAdmin(admin.ModelAdmin):
     def lesson_title(self, obj):
         return obj.lesson.title
 
+    def question_text(self, obj):
+        return obj.choice_text[:60]
 
 @admin.register(Choice)
 class ChoiceAdmin(admin.ModelAdmin):
