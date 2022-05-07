@@ -107,6 +107,9 @@ class Question(models.Model):
     question_text = models.CharField(max_length=250)
     grade = models.PositiveIntegerField()
 
+    def is_multi_choice(self):
+        return self.choices.filter(is_correct=True).count() > 1
+
     def is_get_score(self, selected_ids):
 
         all_answers = self.choices.filter(is_correct=True).count()
