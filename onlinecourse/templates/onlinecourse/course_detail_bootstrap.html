@@ -50,6 +50,45 @@
                     </div>
                 {% endfor %}
             </div>
+
+            <!-- Exam Section -->
+            {% if request.user.is_authenticated %}
+                <a href="#demo" class="btn btn-info w-100" data-toggle="collapse">Start Exam</a>
+
+                <div id="demo" class="collapse">
+                     <form id="questionform" action="{% url 'onlinecourse:submit' object.id %}" method="post">
+                            {% for question in object.get_all_questions %}
+
+                                <div class="card mt-1">
+                                    <div class="card-header">
+                                        <h5><span>{{ forloop.counter }}.</span>{{ question.question_text }}</h5>
+                                    </div>
+                                    {% csrf_token %}
+                                    <div class="form-group p-3">
+                                        {% for choice in question.choices.all %}
+
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" name="choice_{{ choice.id }}"
+                                                        class="form-check-input" id="{{ choice.id }}"
+                                                        value="{{ choice.id }}">
+                                                        {{ choice.choice_text }}
+                                                </label>
+                                            </div>
+
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+
+                            <input class="btn btn-success btn-block" type="submit" value="Submit">
+                    </form>
+                </div>
+            {% endif %}
+
             <!-- Task: show questions and choices -->
             <!-- <HINT> Use Bootstrap Collapse to hide exam first, more details could be found here
             https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp-->
