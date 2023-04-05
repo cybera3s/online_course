@@ -10,7 +10,6 @@ except Exception:
     sys.exit()
 
 from django.conf import settings
-import uuid
 
 
 class Instructor(models.Model):
@@ -70,6 +69,23 @@ class Learner(models.Model):
 
 
 class Course(models.Model):
+    """
+    This class used to implement Instructor model in db
+
+    Attributes:
+        name: a string field to hold course name
+        image: a image field to hold course image
+        description: a string field to hold course description
+        pub_date: a date field to hold course public date
+        instructors: a m-m relation to Instructor object
+        users: a m-m relation to User object
+        total_enrollment: a integer field to hold course total enrollment
+        is_enrolled: a boolian to represent if course is enrolled or not
+
+    Methods:
+        get_all_questions: returns list of all course questions
+    """
+
     name = models.CharField(null=False, max_length=30, default="online course")
     image = models.ImageField(upload_to="course_images/")
     description = models.CharField(max_length=1000)
@@ -82,6 +98,10 @@ class Course(models.Model):
     is_enrolled = False
 
     def get_all_questions(self):
+        """
+        Returns list of all Course questions
+        """
+
         return Question.objects.filter(lesson__course=self)
 
     def __str__(self):
