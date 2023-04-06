@@ -4,34 +4,36 @@
 {%block title %}Register{% endblock %}
 
 {% block content %}
-<!-- Stylize Registration form -->
-<form action="{% url 'onlinecourse:registration' %}" method="post">
-    <div class="container"> <!--Style root div with .container class -->
+<div class="row justify-content-center mt-3">
+    <form action="{% url 'onlinecourse:registration' %}" method="post" class="col-12 col-sm-11 col-md-8 col-lg-4 shadow border rounded p-3
+    >
+        <div class=" container">
         {% csrf_token %}
-        <h1>Sign Up</h1>
+        <h1 class="text-center">Sign Up</h1>
         <hr>
+
+        {% if message %}
+        <div class="alert alert-warning"> <!--Style the message paragraph with .alert and .alert-warning class -->
+            {{ message }}
+        </div>
+        {% endif %}
+
         <div class="form-group"> <!--Style second div with .form-group class -->
             <label for="username"><b>User Name</b></label>
-            <input type="text" class="form-control" placeholder="Enter User Name: " name="username" required>
-            <!--Style input with .form-control class -->
+            <input type="text" class="form-control" placeholder="Enter User Name" name="username" required>
             <label for="firstname"><b>First Name</b></label>
-            <input type="text" class="form-control" placeholder="Enter First Name: " name="firstname" required>
-            <!--Style input with .form-control class -->
+            <input type="text" class="form-control" placeholder="Enter First Name" name="firstname" required>
             <label for="lastname"><b>Last Name</b></label>
-            <input type="text" class="form-control" placeholder="Enter Last Name: " name="lastname" required>
-            <!--Style input with .form-control class -->
+            <input type="text" class="form-control" placeholder="Enter Last Name" name="lastname" required>
             <label for="psw"><b>Password</b></label>
-            <input type="password" class="form-control" placeholder="Enter Password: " name="psw" required>
-            <!--Style input with .form-control class -->
-            {% if message %}
-            <div class="alert alert-warning"> <!--Style the message paragraph with .alert and .alert-warning class -->
-                {{ message }}
-            </div>
-            {% endif %}
-            <button class="btn btn-primary" type="submit">Sign up</button>
+            <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+
+            <button class="btn btn-primary w-100 mt-2" type="submit">Sign up</button>
             <!--Style button with .btn and .btn-primary class -->
         </div>
-    </div>
+</div>
 </form>
+
+</div>
 
 {% endblock %}
