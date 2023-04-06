@@ -32,13 +32,15 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
-    'onlinecourse.apps.OnlinecourseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local apps
+    'onlinecourse.apps.OnlinecourseConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 MEDIA_URL = '/media/'
 
+AUTH_USER_MODEL = 'core.User'
