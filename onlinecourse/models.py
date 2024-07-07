@@ -39,30 +39,17 @@ class Learner(models.Model):
     This class used to implement Learner model in db
 
     attributes:
-            user: a m-1 relation to user model
-            occupation: a string field to represent learner occupation with multiple choices
-            social_link: a url that represents social media link
+            user: a 1-1 relation to user model
     """
 
-    STUDENT = "student"
-    DEVELOPER = "developer"
-    DATA_SCIENTIST = "data_scientist"
-    DATABASE_ADMIN = "dba"
-    OCCUPATION_CHOICES = [
-        (STUDENT, "Student"),
-        (DEVELOPER, "Developer"),
-        (DATA_SCIENTIST, "Data Scientist"),
-        (DATABASE_ADMIN, "Database Admin"),
-    ]
-
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-    occupation = models.CharField(
-        null=False, max_length=20, choices=OCCUPATION_CHOICES, default=STUDENT
+    level = models.IntegerField(
+        verbose_name="Level",
+
     )
-    social_link = models.URLField(max_length=200)
 
     def __str__(self):
         return self.user.username + "," + self.occupation
