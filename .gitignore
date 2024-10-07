@@ -5,3 +5,4 @@ venv
 migrations
 .venv
 db.sqlite3
+media
