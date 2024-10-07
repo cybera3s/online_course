@@ -8,13 +8,18 @@ class QuestionInline(admin.StackedInline):
     """
     A Django admin inline class for the Question model.
 
-    This inline class is used to display a set of question fields within the admin interface
-    of another model. It allows the user to edit multiple instances of the Question model
-    at once, and includes a form for creating new Question instances.
+    This inline class is used to display a set of
+    question fields within the admin interface
+    of another model. It allows the user to edit
+    multiple instances of the Question model
+    at once, and includes a form for creating new
+    Question instances.
 
     Attributes:
-        model (django.db.models.Model): The model class that this inline is based on.
-        extra (int): The number of extra forms that should be displayed in the admin interface.
+        model (django.db.models.Model): The model
+        class that this inline is based on.
+        extra (int): The number of extra forms that
+        should be displayed in the admin interface.
     """
 
     model = Question
@@ -25,9 +30,12 @@ class ChoiceInline(admin.StackedInline):
     """
     A Django admin inline class for the Choice model.
 
-    This inline class is used to display a set of choice fields within the admin interface
-    of another model. It allows the user to edit multiple instances of the Choice model
-    at once, and includes a form for creating new Choice instances.
+    This inline class is used to display a set of
+    choice fields within the admin interface
+    of another model. It allows the user to edit
+    multiple instances of the Choice model
+    at once, and includes a form for creating new
+    Choice instances.
     """
 
     model = Choice
@@ -38,13 +46,18 @@ class LessonInline(admin.StackedInline):
     """
     A Django admin inline class for the Lesson model.
 
-    This inline class is used to display a set of lesson fields within the admin interface
-    of another model. It allows the user to edit multiple instances of the Lesson model
-    at once, and includes a form for creating new Lesson instances.
+    This inline class is used to display a set of
+    lesson fields within the admin interface
+    of another model. It allows the user to edit
+    multiple instances of the Lesson model
+    at once, and includes a form for creating new
+    Lesson instances.
 
     Attributes:
-        model (django.db.models.Model): The model class that this inline is based on.
-        extra (int): The number of extra forms that should be displayed in the admin interface.
+        model (django.db.models.Model): The model
+        class that this inline is based on.
+        extra (int): The number of extra forms that
+         should be displayed in the admin interface.
     """
 
     model = Lesson
@@ -55,15 +68,21 @@ class CourseAdmin(admin.ModelAdmin):
     """
     Admin interface for the Course model.
 
-    This class defines how the Course model should be displayed and edited
-    in the Django admin panel. It includes a list of fields to display, filters,
+    This class defines how the Course model s
+    hould be displayed and edited
+    in the Django admin panel. It includes a
+    list of fields to display, filters,
     search fields, and an inline for related Lesson objects.
 
     Attributes:
-        inlines (list): A list of inline classes to include in the edit view.
-        list_display (tuple): A tuple of field names to display in the list view.
-        list_filter (list): A list of field names to filter by in the list view.
-        search_fields (list): A list of field names to search by in the list view.
+        inlines (list): A list of inline
+        classes to include in the edit view.
+        list_display (tuple): A tuple of
+        field names to display in the list view.
+        list_filter (list): A list of
+        field names to filter by in the list view.
+        search_fields (list): A list of
+        field names to search by in the list view.
 
     """
 
@@ -95,20 +114,28 @@ class QuestionAdmin(admin.ModelAdmin):
     """
     Admin interface for the Question model.
 
-    This class defines how the Question model should be displayed and edited
-    in the Django admin panel. It includes a list of fields to display, filters,
+    This class defines how the Question model
+    should be displayed and edited
+    in the Django admin panel. It includes a
+    list of fields to display, filters,
     search fields, and an inline for related Choice objects.
 
     Attributes:
-        list_display (tuple): A tuple of field names to display in the list view.
-        list_filter (tuple): A tuple of field names to filter by in the list view.
-        search_fields (tuple): A tuple of field names to search by in the list view.
-        inlines (list): A list of inline classes to include in the edit view.
+        list_display (tuple): A tuple of field
+        names to display in the list view.
+        list_filter (tuple): A tuple of field
+        names to filter by in the list view.
+        search_fields (tuple): A tuple of field
+        names to search by in the list view.
+        inlines (list): A list of inline classes
+        to include in the edit view.
 
     Methods:
-        lesson_title: A method to display the title of the related Lesson object
+        lesson_title: A method to display the
+        title of the related Lesson object
             in the list view.
-        question_text: A method to display a truncated version of the question text
+        question_text: A method to display a
+        truncated version of the question text
             in the list view.
     """
 
@@ -153,15 +180,20 @@ class ChoiceAdmin(admin.ModelAdmin):
     Admin interface for the Choice model.
 
     This class defines how the Choice model should be displayed and edited
-    in the Django admin panel. It includes a list of fields to display and filters.
+    in the Django admin panel. It i
+    ncludes a list of fields to display and filters.
 
     Attributes:
-        list_display (tuple): A tuple of field names to display in the list view.
-        list_filter (tuple): A tuple of field names to filter by in the list view.
-        inlines (tuple): A tuple of inline classes to include in the edit view.
+        list_display (tuple): A tuple of
+        field names to display in the list view.
+        list_filter (tuple): A tuple of field
+        names to filter by in the list view.
+        inlines (tuple): A tuple of inline
+        classes to include in the edit view.
 
     Methods:
-        text: A method to display truncated Choice text in the list view
+        text: A method to display truncated
+        Choice text in the list view
     """
 
     list_display = ("question", "text")

@@ -5,7 +5,8 @@ try:
     from django.db import models
 except Exception:
     print(
-        "There was an error loading django modules. Do you have django installed?"
+        "There was an error loading django "
+        "modules. Do you have django installed?"
     )
     sys.exit()
 
@@ -118,14 +119,17 @@ class Lesson(models.Model):
 class Enrollment(models.Model):
     """
     This class used to implement Enrollment table in db
-    Once a user enrolled a class, an enrollment entry should be created between the user and course
-    And we could use the enrollment to track information such as exam submissions
+    Once a user enrolled a class, an enrollment
+    entry should be created between the user and course
+    And we could use the enrollment to track
+    information such as exam submissions
 
     attributes:
         user: a 1-m relation to User model
         course: a 1-m relation to Course model
         date_enrolled: a date field to hold joining date (default now)
-        mode: a string field with choices to hold type of course (default Audit)
+        mode: a string field with choices to
+        hold type of course (default Audit)
         rating: a decimal field to hold rate of enrollment (default 5.0)
 
     """

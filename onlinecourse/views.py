@@ -21,11 +21,16 @@ def registration_request(request):
         request: HttpRequest object containing metadata about the request.
 
     Returns:
-        If the request is a GET request, renders a registration form page.
-        If the request is a POST request, attempts to create a new user account
-        using the form data. If the username is not already taken, logs the user
-        in and redirects them to the course index page. If the username is taken,
-        displays an error message on the registration form page and allows the user
+        If the request is a GET request,
+        renders a registration form page.
+        If the request is a POST request,
+        attempts to create a new user account
+        using the form data. If the username
+        is not already taken, logs the user
+        in and redirects them to the course
+        index page. If the username is taken,
+        displays an error message on the
+        registration form page and allows the user
         to try again.
 
     Raises:
@@ -50,8 +55,8 @@ def registration_request(request):
         try:
             User.objects.get(username=username)
             user_exist = True
-        except:
-            logger.error("New user")
+        except User.DoesNotExist as e:
+            logger.error("New user", exc_info=str(e))
 
         if not user_exist:
             user = User.objects.create_user(
@@ -160,8 +165,10 @@ class CourseListView(generic.ListView):
     View class for displaying a list of courses.
 
     Attributes:
-        template_name (str): Name of the template to render for this view.
-        context_object_name (str): Name of the context variable containing the course list.
+        template_name (str): Name of the template to
+         render for this view.
+        context_object_name (str): Name of the
+        context variable containing the course list.
 
     Methods:
         get_queryset(): Return the list of courses to display.
@@ -172,7 +179,8 @@ class CourseListView(generic.ListView):
 
     def get_queryset(self):
         """
-        returns custom list of courses and check authenticated user enrollment in them
+        returns custom list of courses and check
+        authenticated user enrollment in them
         """
 
         user = self.request.user
@@ -186,15 +194,21 @@ class CourseListView(generic.ListView):
 
 class CourseDetailView(generic.DetailView):
     """
-    A Django class-based view for displaying a single instance of the Course model.
+    A Django class-based view for displaying a single
+    instance of the Course model.
 
-    This view inherits from Django's generic `DetailView` class and is used to display
-    detailed information about a specific course. It retrieves the Course instance based
-    on the primary key (pk) passed in the URL and renders a template with the course data.
+    This view inherits from Django's generic `DetailView`
+    class and is used to display
+    detailed information about a specific course. It
+    retrieves the Course instance based
+    on the primary key (pk) passed in the URL and renders a
+    template with the course data.
 
     Attributes:
-        model (django.db.models.Model): The model class that this view is based on.
-        template_name (str): The name of the template that will be used to render the view.
+        model (django.db.models.Model): The model
+        class that this view is based on.
+        template_name (str): The name of the template
+        that will be used to render the view.
     """
 
     model = Course
@@ -203,10 +217,12 @@ class CourseDetailView(generic.DetailView):
 
 def enroll(request, course_id):
     """
-    Enroll a user in a course if user is not already enrolled and authenticated
+    Enroll a user in a course if user is not already
+    enrolled and authenticated
 
     Args:
-        request: HttpRequest object containing metadata about the request.
+        request: HttpRequest object containing
+        metadata about the request.
         course_id: Course id for enrollment.
 
     Returns:
