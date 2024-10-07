@@ -19,7 +19,7 @@ class Instructor(models.Model):
     attributes:
             user: a m-1 relation to user model
             full_time: a boolean to represent full time
-            total_learners: a interger that represent total learners
+            total_learners: an integer that represent total learners
     """
 
     user = models.ForeignKey(
@@ -48,7 +48,6 @@ class Learner(models.Model):
     )
     level = models.IntegerField(
         verbose_name="Level",
-
     )
 
     def __str__(self):
@@ -57,7 +56,7 @@ class Learner(models.Model):
 
 class Course(models.Model):
     """
-    This class used to implement Instructor model in db
+    This class used to implement Course model in db
 
     Attributes:
         name: a string field to hold course name
@@ -73,7 +72,7 @@ class Course(models.Model):
         get_all_questions: returns list of all course questions
     """
 
-    name = models.CharField(null=False, max_length=30, default="online course")
+    name = models.CharField(null=False, max_length=30)
     image = models.ImageField(upload_to="course_images/")
     description = models.CharField(max_length=1000)
     pub_date = models.DateField(null=True)
