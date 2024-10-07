@@ -6,4 +6,5 @@ class User(AbstractUser):
     """
     This class used to implement Custom User table in db
     """
+
     pass
